@@ -3,6 +3,7 @@
   top: -40px;
   right: -40px;
   background-image: url(../../../images/Close\ Icon.svg);
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   border: 0;
@@ -17,3 +18,11 @@
   opacity: 0.6;
 }
 
+@media screen and (max-width: 767.98px) {
+  .popup__close-btn {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+}

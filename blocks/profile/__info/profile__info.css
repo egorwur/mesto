@@ -1,14 +1,14 @@
 .profile__info {
   color: #fff;
   display: grid;
-  grid-template-columns: 294px min-content;
-  grid-template-rows: auto auto;
   grid-template-areas:
-    "name btn"
-    "description" ".";
+    "name button"
+    "description description";
+  grid-template-columns: min-content;
+  grid-template-rows: auto auto;
   gap: 7px 18px;
   align-items: baseline;
-  max-width: 336px;
+
 }
 
 @media screen and (max-width: 767.98px) {

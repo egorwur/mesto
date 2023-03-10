@@ -1,5 +1,5 @@
 .profile__edit-btn {
-  grid-area: "button";
+  grid-area: button;
   padding: 0;
   border: 1px solid #fff;
   box-sizing: border-box;

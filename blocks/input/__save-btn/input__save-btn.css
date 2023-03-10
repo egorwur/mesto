@@ -14,3 +14,10 @@
 .input__save-btn:hover {
   opacity: 0.8;
 }
+
+@media screen and (max-width: 767.98px) {
+  .input__save-btn {
+   width: 238px;
+   height: 46px;
+  }
+}
