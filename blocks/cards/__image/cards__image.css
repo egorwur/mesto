@@ -1,0 +1,5 @@
+.cards__image {
+  aspect-ratio: 1/1;
+  display: block;
+  object-fit: contain;
+}

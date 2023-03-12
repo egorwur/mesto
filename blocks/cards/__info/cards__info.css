@@ -1,0 +1,7 @@
+.cards__info {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  padding: 0 20px;
+  margin: 25px 0;
+}
