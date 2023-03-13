@@ -4,6 +4,8 @@ const popupElement = document.querySelector('.popup')
 const popupSaveButtonElement = popupElement.querySelector('.popup__save-btn')
 const popupCloseButtonElement = popupElement.querySelector('.popup__close-btn')
 
+const formElement = document.querySelector('.input');
+
 const openPopup = function() {
   popupElement.classList.add('popup_opened')
 };
@@ -18,7 +20,7 @@ const closePopup = function() {
 popupButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 
-const formElement = document.querySelector('.input');
+
 
 let nameInput = formElement.querySelector('.input__text_type_name');
 let jobInput = formElement.querySelector('.input__text_type_description');
