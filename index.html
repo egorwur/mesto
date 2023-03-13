@@ -12,7 +12,7 @@
     </header>
     <main class="page__content">
       <section class="profile">
-        <img src="./images/image.jpg" alt="" class="profile__avatar">
+        <img src="./images/image.jpg" alt="Аватарка пользователя" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-btn"></button>
@@ -23,42 +23,42 @@
       <section class="page__gallery">
         <ul class="cards">
           <li class="cards__item">
-            <img src="./images/Karachaevsk.jpg" alt="" class="cards__image">
+            <img src="./images/Karachaevsk.jpg" alt="Фотография Карачаевска" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Карачаевск</h3>
               <button class="cards__like-btn"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img src="./images/Elbrus.png" alt="" class="cards__image">
+            <img src="./images/Elbrus.png" alt="Фотография горы Эльбрус" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Гора Эльбрус</h3>
               <button class="cards__like-btn"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img src="./images/Dombay.png" alt="" class="cards__image">
+            <img src="./images/Dombay.png" alt="Фотография гор Домбай" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Домбай</h3>
               <button class="cards__like-btn"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img src="./images/Elbrus.png" alt="" class="cards__image">
+            <img src="./images/Elbrus.png" alt="Фотография горы Эльбрус" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Гора Эльбрус</h3>
               <button class="cards__like-btn"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img src="./images/Dombay.png" alt="" class="cards__image">
+            <img src="./images/Dombay.png" alt="Фотография гор Домбай" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Домбай</h3>
               <button class="cards__like-btn"></button>
             </div>
           </li>
           <li class="cards__item">
-            <img src="./images/Karachaevsk.jpg" alt="" class="cards__image">
+            <img src="./images/Karachaevsk.jpg" alt="Фотография Карачаевска" class="cards__image">
             <div class="cards__info">
               <h3 class="cards__title">Карачаево-Черкесия</h3>
               <button class="cards__like-btn"></button>
@@ -67,16 +67,16 @@
         </ul>
       </section>
     </main>
-    <footer class="footer">
-
+    <footer class="footer page__footer">
+      <p class="footer__copyright">&copy 2020 Mesto Russia</p>
     </footer>
     <section class="popup">
       <div class="popup__container">
         <button class="popup__close-btn"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="profile-edit" method="get" class="input">
-          <input type="text" name="name" class="input__text input__text_type_name" placeholder="Ваше имя" required>
-          <input type="text" name="description" class="input__text input__text_type_description" placeholder="Вид деятельности" required>
+          <input type="text" name="name" class="input__text input__text_type_name" maxlength="35" placeholder="Ваше имя" required>
+          <input type="text" name="description" class="input__text input__text_type_description" maxlength="35" placeholder="Вид деятельности" required>
           <button class="input__save-btn">Сохранить</button>
         </form>
       </div>

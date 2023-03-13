@@ -8,6 +8,7 @@
   grid-template-rows: min-content min-content;
   gap: 7px 18px;
   align-items: baseline;
+  justify-items: center;
 
 }
 
