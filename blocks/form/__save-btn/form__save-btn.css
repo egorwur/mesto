@@ -1,7 +1,7 @@
-.input__save-btn {
+.form__save-btn {
   width: 358px;
   height: 50px;
-  margin: 48px 0 0;
+  margin: 48px 0 37px;
   padding: 0;
   border: 0;
   border-radius: 2px;
@@ -9,15 +9,20 @@
   color: #fff;
   background-color: #000;
   cursor: pointer;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
-.input__save-btn:hover {
+.form__save-btn:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 767.98px) {
-  .input__save-btn {
+  .form__save-btn {
+    margin: 45px 0 25px;
    width: 238px;
    height: 46px;
+   font-size: 14px;
   }
 }

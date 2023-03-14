@@ -1,4 +1,10 @@
 .page__gallery {
-  margin: 50px auto 66px;
+  margin: 50px auto 0;
 
+}
+
+@media screen and (max-width: 767.98px) {
+  .page__gallery {
+    margin-top: 36px;
+  }
 }

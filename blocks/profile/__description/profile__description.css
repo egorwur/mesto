@@ -10,10 +10,13 @@
   white-space: nowrap;
   overflow: hidden;
   justify-self: left;
+  max-width: 336px;
 }
 
 @media screen and (max-width: 767.98px) {
   .profile__description {
     font-size: 14px;
+    justify-self: unset;
+    max-width: 282px;
   }
 }

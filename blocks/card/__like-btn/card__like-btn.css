@@ -1,8 +1,8 @@
-.cards__like-btn {
+.card__like-btn {
   border: 0;
   padding: 0;
   background-image: url(../../../images/like-btn.svg);
-  background-color: rgba(1, 1, 1, 0);
+  background-color: transparent;
   background-position: center;
   background-size: cover;
   width: 22px;
@@ -10,7 +10,7 @@
   transition: opacity 0.22s ease-out;
   cursor: pointer;
 }
-.cards__like-btn:hover {
+.card__like-btn:hover {
   opacity: 0.5;
 }
 

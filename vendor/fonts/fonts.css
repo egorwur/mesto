@@ -16,10 +16,10 @@
 
 @font-face {
   font-family: Inter;
-  src: url(./Inter-Bold.woff2),
-       url(./Inter-Bold.woff);
+  src: url(./Inter-Medium.woff2),
+       url(./Inter-Medium.woff);
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 

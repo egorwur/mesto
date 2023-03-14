@@ -1,35 +1,28 @@
-const profileElement = document.querySelector('.profile')
-const popupButtonElement = profileElement.querySelector('.profile__edit-btn')
-const popupElement = document.querySelector('.popup')
-const popupSaveButtonElement = popupElement.querySelector('.popup__save-btn')
-const popupCloseButtonElement = popupElement.querySelector('.popup__close-btn')
+const profileElement = document.querySelector(".profile");
+const popupButtonElement = profileElement.querySelector(".profile__edit-btn");
+const popupElement = document.querySelector(".popup");
+const popupCloseButtonElement = popupElement.querySelector(".popup__close-btn");
 
-const formElement = document.querySelector('.input');
+const formElement = document.querySelector(".form");
 
-const openPopup = function() {
-  popupElement.classList.add('popup_opened')
+let nameInput = formElement.querySelector(".form__text_type_name");
+let jobInput = formElement.querySelector(".form__text_type_description");
+
+let nameOutput = profileElement.querySelector(".profile__name");
+let jobOutput = profileElement.querySelector(".profile__description");
+
+const openPopup = function () {
+  nameInput.value = nameOutput.textContent;
+  jobInput.value = jobOutput.textContent;
+  popupElement.classList.add("popup_opened");
 };
 
-const closePopup = function() {
-  popupElement.classList.remove('popup_opened')
-  nameInput.value = nameOutput.textContent
-  jobInput.value = jobOutput.textContent
+const closePopup = function () {
+  popupElement.classList.remove("popup_opened");
 };
 
-
-popupButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
-
-
-
-let nameInput = formElement.querySelector('.input__text_type_name');
-let jobInput = formElement.querySelector('.input__text_type_description');
-
-let nameOutput = profileElement.querySelector('.profile__name');
-let jobOutput = profileElement.querySelector('.profile__description');
-
-nameInput.value = nameOutput.textContent
-jobInput.value = jobOutput.textContent
+popupButtonElement.addEventListener("click", openPopup);
+popupCloseButtonElement.addEventListener("click", closePopup);
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -43,4 +36,4 @@ function handleFormSubmit(evt) {
   closePopup();
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener("submit", handleFormSubmit);

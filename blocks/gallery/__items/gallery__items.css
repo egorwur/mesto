@@ -1,4 +1,4 @@
-.cards {
+.gallery__items {
   display: grid;
   grid-template-columns: repeat(auto-fill, 282px);
   gap: 20px 17px;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 500px) and (max-width: 991px) {
-  .cards {
+  .gallery__items {
     padding: 0 5px;
   }
 }
