@@ -30,14 +30,11 @@ const galleryElement = document.querySelector(".gallery__items");
 
 initialCards.forEach((el) => {
   const cardCopyElement = cardTemplateElement
-  .querySelector(".card")
-  .cloneNode(true);
+    .querySelector(".card")
+    .cloneNode(true);
 
-  let cardLink = cardCopyElement.querySelector(".card__image")//.src = el.link;
-  let cardName = cardCopyElement.querySelector(".card__title")//.textContent = el.name;
-
-  cardLink.src = el.link
-  cardName.textContent = el.name
+  let cardLink = cardCopyElement.querySelector(".card__image").src = el.link;
+  let cardName = cardCopyElement.querySelector(".card__title").textContent = el.name;
 
   cardCopyElement.querySelector(".card__image").addEventListener("click", imagePopupOpen)
 
@@ -49,7 +46,7 @@ initialCards.forEach((el) => {
 //image popup open
 const imagePopup = document.querySelector(".popup-image");
 
-function imagePopupOpen (evt) {
+function imagePopupOpen(evt) {
 
   imagePopup.classList.add("popup_opened");
 
@@ -57,9 +54,7 @@ function imagePopupOpen (evt) {
   let titleInPopup = imagePopup.querySelector(".popup__image-name")
 
   imageInPopup.src = evt.currentTarget.src
-  titleInPopup.textContent =  evt.currentTarget.closest(".card").querySelector(".card__title").textContent
-
-  console.log( evt.currentTarget.closest(".card").querySelector(".card__title").textContent)
+  titleInPopup.textContent = evt.currentTarget.closest(".card").querySelector(".card__title").textContent
 }
 
 
@@ -74,11 +69,13 @@ function newCardCreate(evt) {
   evt.preventDefault();
 
   const cardCopyElement = cardTemplateElement
-  .querySelector(".card")
-  .cloneNode(true);
+    .querySelector(".card")
+    .cloneNode(true);
 
   cardCopyElement.querySelector(".card__title").textContent = pictureNameInput.value;
   cardCopyElement.querySelector(".card__image").src = pictureLinkInput.value;
+
+  cardCopyElement.querySelector(".card__image").addEventListener("click", imagePopupOpen)
 
   let removeCardButton = cardCopyElement.querySelector(".card__remove-btn").addEventListener("click", deleteCard)
   let likeButton = cardCopyElement.querySelector(".card__like-btn").addEventListener("click", evt => evt.currentTarget.classList.toggle("card__like-btn_active"))
@@ -90,7 +87,7 @@ function newCardCreate(evt) {
   pictureLinkInput.value = "";
 }
 
-function deleteCard (evt) {
+function deleteCard(evt) {
   evt.target.closest(".card").remove()
 }
 
@@ -100,9 +97,9 @@ const popupElement = document.querySelector(".popup");
 const popupCloseButtonElement = popupElement.querySelector(".popup__close-btn");
 
 //New picture popup open/close
-const newCardOpenButton = profileElement.querySelector(".profile__add-btn").addEventListener("click",() => addPopup.classList.add('popup_opened'))
+const newCardOpenButton = profileElement.querySelector(".profile__add-btn").addEventListener("click", () => addPopup.classList.add('popup_opened'))
 const newCardCloseButton = addPopup.querySelector(".popup__close-btn")
-function closeNewCardPopup () {
+function closeNewCardPopup() {
   addPopup.classList.remove('popup_opened')
 }
 
