@@ -1,0 +1,9 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "--prefer-void-tags": true,
+  "trim_trailing_whitespace": true,
+  "jsxSelfClosingTag": "never",
+    "htmlSelfClosing": false,
+    "bracketSameLine": true
+}
