@@ -151,8 +151,8 @@ function newCardCreate(evt) {
   let cardCopyElement = createCardElement(pictureNameInput.value, pictureLinkInput.value);
   galleryElement.prepend(cardCopyElement);
 
-  closeNewCardPopup();
-console.log(addNewCardFormElement)
+
+  imageAddPopup.classList.remove('popup_opened');
   addNewCardFormElement.reset();
 }
 
