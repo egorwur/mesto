@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
 
@@ -13,14 +13,14 @@
         <img
           src="./images/logo.svg"
           alt="Логотип 'Место'"
-          class="header__logo">
+          class="header__logo" />
       </header>
       <main class="page__content">
         <section class="profile">
           <img
             src="./images/image.jpg"
             alt="Аватарка пользователя"
-            class="profile__avatar">
+            class="profile__avatar" />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-btn" type="button"></button>
@@ -47,14 +47,14 @@
             class="form__text form__text_type_name"
             maxlength="35"
             placeholder="Ваше имя"
-            required>
+            required />
           <input
             type="text"
             name="description"
             class="form__text form__text_type_description"
             maxlength="35"
             placeholder="Вид деятельности"
-            required>
+            required />
           <button class="form__save-btn" type="submit">Сохранить</button>
         </form>
       </div>
@@ -70,29 +70,28 @@
             class="form__text form__text_type_name"
             maxlength="35"
             placeholder="Название"
-            required>
+            required />
           <input
             type="text"
             name="link"
             class="form__text form__text_type_link"
             placeholder="Ссылка на картинку"
-            required>
-            <button class="form__save-btn" type="submit">Создать</button>
+            required />
+          <button class="form__save-btn" type="submit">Создать</button>
         </form>
       </div>
     </div>
     <div class="popup popup-image">
-
       <div class="popup__content">
         <button class="popup__close-btn" type="button"></button>
-        <img src="#" alt="" class="popup__image">
+        <img src="#" alt="" class="popup__image" />
         <span class="popup__image-name"></span>
       </div>
     </div>
     <template class="card-template">
       <li class="card">
         <button class="card__remove-btn" type="button"></button>
-        <img src="#" alt="" class="card__image">
+        <img src="#" alt="" class="card__image" />
         <div class="card__info">
           <h2 class="card__title"></h2>
           <button class="card__like-btn" type="button"></button>

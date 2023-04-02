@@ -43,3 +43,10 @@ trim_trailing_whitespace = true
 # Possible values - true, false
 
 insert_final_newline = true
+
+prettier.bracketSameLine = true
+
+--prefer-void-tags = true
+trim_trailing_whitespace = true
+jsxSelfClosingTag = "never"
+htmlSelfClosing = false
