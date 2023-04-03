@@ -1,75 +1,23 @@
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 const cardTemplateElement = document.querySelector(".card-template").content;
 const galleryElement = document.querySelector(".gallery__items");
 
-function createCardElement(name, link) {
-  const cardCopyElement = cardTemplateElement.querySelector(".card").cloneNode(true);
+//PROFILE
+const profileElement = document.querySelector(".profile");
+const profilePopupButtonElement =
+  profileElement.querySelector(".profile__edit-btn");
+const profilePopupElement = document.querySelector(".popup-profile");
 
-  cardCopyElement.querySelector(".card__title").textContent = name;
-  cardCopyElement.querySelector(".card__image").src = link;
-  cardCopyElement.querySelector(".card__image").alt = name;
-  cardCopyElement.querySelector(".card__image").addEventListener("click", openImagePopup);
-  cardCopyElement.querySelector(".card__remove-btn").addEventListener("click", deleteCard);
-  cardCopyElement.querySelector(".card__like-btn").addEventListener("click", (evt) => evt.currentTarget.classList.toggle("card__like-btn_active"));
+const newCardOpenButton = profileElement.querySelector(".profile__add-btn");
 
-  return cardCopyElement;
-}
+const formProfileElement = profilePopupElement.querySelector(".form");
 
-initialCards.forEach((el) => {
-  const cardCopyElement = createCardElement(el.name, el.link);
-  galleryElement.append(cardCopyElement);
-});
-// initialCards.forEach((el) => {
-//   const cardCopyElement = cardTemplateElement
-//     .querySelector(".card")
-//     .cloneNode(true);
+const nameInput = formProfileElement.querySelector(".form__text_type_name");
+const jobInput = formProfileElement.querySelector(".form__text_type_description");
 
-//   let cardLink = (cardCopyElement.querySelector(".card__image").src = el.link);
-//   let cardName = (cardCopyElement.querySelector(".card__title").textContent =
-//     el.name);
+const nameOutput = profileElement.querySelector(".profile__name");
+const jobOutput = profileElement.querySelector(".profile__description");
 
-//   cardCopyElement
-//     .querySelector(".card__image")
-//     .addEventListener("click", imagePopupOpen);
-
-//   let removeCardButton = cardCopyElement
-//     .querySelector(".card__remove-btn")
-//     .addEventListener("click", deleteCard);
-//   let likeButton = cardCopyElement
-//     .querySelector(".card__like-btn")
-//     .addEventListener("click", (evt) =>
-//       evt.currentTarget.classList.toggle("card__like-btn_active")
-//     );
-//   galleryElement.append(cardCopyElement);
-// });
-
-//image popup open
+//IMAGE FULL SIZE POPUP
 const imagePopup = document.querySelector(".popup-image");
 
 function openImagePopup(evt) {
@@ -85,10 +33,38 @@ function openImagePopup(evt) {
     .querySelector(".card__title").textContent;
 }
 
-// Get all popup elements
+//CARDS FROM DATA
+function createCardElement(name, link) {
+  const cardCopyElement = cardTemplateElement
+    .querySelector(".card")
+    .cloneNode(true);
+
+  cardCopyElement.querySelector(".card__title").textContent = name;
+  cardCopyElement.querySelector(".card__image").src = link;
+  cardCopyElement.querySelector(".card__image").alt = name;
+  cardCopyElement
+    .querySelector(".card__image")
+    .addEventListener("click", openImagePopup);
+  cardCopyElement
+    .querySelector(".card__remove-btn")
+    .addEventListener("click", deleteCard);
+  cardCopyElement
+    .querySelector(".card__like-btn")
+    .addEventListener("click", (evt) =>
+      evt.currentTarget.classList.toggle("card__like-btn_active")
+    );
+
+  return cardCopyElement;
+}
+
+initialCards.forEach((el) => {
+  const cardCopyElement = createCardElement(el.name, el.link);
+  galleryElement.append(cardCopyElement);
+});
+
+// CLOSE BUTTON FOR ALL POPUPS
 const popups = document.querySelectorAll(".popup");
 
-// Add click event listener to each close button
 popups.forEach((popup) => {
   const closeButton = popup.querySelector(".popup__close-btn");
   closeButton.addEventListener("click", () => {
@@ -96,46 +72,15 @@ popups.forEach((popup) => {
   });
 });
 
-// NEW PICTURE POPUP
-// const addPopup = document.querySelector(".popup-add");
-// const addNewCardFormElement = addPopup.querySelector(".form");
-// let pictureNameInput = addNewCardFormElement.querySelector(
-//   ".form__text_type_name"
-// );
-// let pictureLinkInput = addNewCardFormElement.querySelector(
-//   ".form__text_type_link"
-// );
+//POPUP CLOSE BY SUBMIT FUNCTION
+function closeCurrentPopup() {
+  const openedPopup = document.querySelector(".popup_opened");
+  if (openedPopup) {
+    openedPopup.classList.remove("popup_opened");
+  }
+}
 
-// function newCardCreate(evt) {
-//   evt.preventDefault();
-
-//   const cardCopyElement = cardTemplateElement
-//     .querySelector(".card")
-//     .cloneNode(true);
-
-//   cardCopyElement.querySelector(".card__title").textContent =
-//     pictureNameInput.value;
-//   cardCopyElement.querySelector(".card__image").src = pictureLinkInput.value;
-
-//   cardCopyElement
-//     .querySelector(".card__image")
-//     .addEventListener("click", imagePopupOpen);
-
-//   let removeCardButton = cardCopyElement
-//     .querySelector(".card__remove-btn")
-//     .addEventListener("click", deleteCard);
-//   let likeButton = cardCopyElement
-//     .querySelector(".card__like-btn")
-//     .addEventListener("click", (evt) =>
-//       evt.currentTarget.classList.toggle("card__like-btn_active")
-//     );
-//   galleryElement.prepend(cardCopyElement);
-
-//   closeNewCardPopup();
-
-//   pictureNameInput.value = "";
-//   pictureLinkInput.value = "";
-// }
+//NEW CARD CREATE / DELETE
 const imageAddPopup = document.querySelector(".popup-add");
 const addNewCardFormElement = imageAddPopup.querySelector(".form");
 const pictureNameInput = addNewCardFormElement.querySelector(
@@ -148,11 +93,13 @@ const pictureLinkInput = addNewCardFormElement.querySelector(
 function newCardCreate(evt) {
   evt.preventDefault();
 
-  let cardCopyElement = createCardElement(pictureNameInput.value, pictureLinkInput.value);
+  const cardCopyElement = createCardElement(
+    pictureNameInput.value,
+    pictureLinkInput.value
+  );
   galleryElement.prepend(cardCopyElement);
 
-
-  imageAddPopup.classList.remove('popup_opened');
+  closeCurrentPopup();
   addNewCardFormElement.reset();
 }
 
@@ -160,47 +107,29 @@ function deleteCard(evt) {
   evt.target.closest(".card").remove();
 }
 
-const profileElement = document.querySelector(".profile");
-const popupButtonElement = profileElement.querySelector(".profile__edit-btn");
-const popupElement = document.querySelector(".popup");
-const popupCloseButtonElement = popupElement.querySelector(".popup__close-btn");
-
-//New picture popup open/close
-const newCardOpenButton = profileElement
-  .querySelector(".profile__add-btn")
-newCardOpenButton.addEventListener("click", () => imageAddPopup.classList.add("popup_opened"));
-const newCardCloseButton = imageAddPopup.querySelector(".popup__close-btn");
-
-
-const formElement = document.querySelector(".form");
-
-let nameInput = formElement.querySelector(".form__text_type_name");
-let jobInput = formElement.querySelector(".form__text_type_description");
-
-let nameOutput = profileElement.querySelector(".profile__name");
-let jobOutput = profileElement.querySelector(".profile__description");
-
-const openPopup = function () {
+//PROFILE POPUP
+const openProfilePopup = function () {
   nameInput.value = nameOutput.textContent;
   jobInput.value = jobOutput.textContent;
-  popupElement.classList.add("popup_opened");
+  profilePopupElement.classList.add("popup_opened");
 };
-
-popupButtonElement.addEventListener("click", openPopup);
-popupCloseButtonElement.addEventListener("click", (evt) => evt.currentTarget.closest('.popup'.classList.remove('popup_opened')));
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
 
-  let newName = nameInput.value;
-  let newJob = jobInput.value;
+  const newName = nameInput.value;
+  const newJob = jobInput.value;
 
   nameOutput.textContent = newName;
   jobOutput.textContent = newJob;
 
-  closePopup();
+  closeCurrentPopup();
 }
 
-formElement.addEventListener("submit", handleFormSubmit);
+//EVENT LISTENERS
+newCardOpenButton.addEventListener("click", () =>
+  imageAddPopup.classList.add("popup_opened")
+);
+profilePopupButtonElement.addEventListener("click", openProfilePopup);
+formProfileElement.addEventListener("submit", handleFormSubmit);
 addNewCardFormElement.addEventListener("submit", newCardCreate);
-
