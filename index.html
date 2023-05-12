@@ -40,21 +40,31 @@
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="profile-edit" method="get" class="form">
+        <form name="profile-edit" method="get" class="form" novalidate>
+          <label class="form__field">
           <input
+            id="name-input"
             type="text"
             name="name"
-            class="form__text form__text_type_name"
-            maxlength="35"
+            class="form__input form__text_type_name"
+            minlength="2"
+            maxlength="40"
             placeholder="Ваше имя"
             required />
+          <span class="form__input-error name-input-error"></span>
+        </label>
+        <label class="form__field">
           <input
+            id="description-input"
             type="text"
             name="description"
-            class="form__text form__text_type_description"
-            maxlength="35"
+            class="form__input form__text_type_description"
+            minlength="2"
+            maxlength="200"
             placeholder="Вид деятельности"
             required />
+            <span class="form__input-error description-input-error"></span>
+          </label>
           <button class="form__save-btn" type="submit">Сохранить</button>
         </form>
       </div>
@@ -63,20 +73,29 @@
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="gallery-add" method="get" class="form">
+        <form name="gallery-add" method="get" class="form" novalidate>
+          <label class="form__field">
           <input
+            id="picture-name-input"
             type="text"
             name="name"
-            class="form__text form__text_type_name"
-            maxlength="35"
+            class="form__input form__text_type_name"
+            minlength="2"
+            maxlength="30"
             placeholder="Название"
             required />
+            <span class="form__input-error picture-name-input-error"></span>
+          </label>
+          <label class="form__field">
           <input
-            type="text"
+            id="picture-url-input"
+            type="url"
             name="link"
-            class="form__text form__text_type_link"
+            class="form__input form__text_type_link"
             placeholder="Ссылка на картинку"
             required />
+            <span class="form__input-error picture-url-input-error"></span>
+          </label>
           <button class="form__save-btn" type="submit">Создать</button>
         </form>
       </div>
@@ -98,7 +117,9 @@
         </div>
       </li>
     </template>
+
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
