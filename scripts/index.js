@@ -11,9 +11,9 @@ const newCardOpenButton = profileElement.querySelector(".profile__add-btn");
 
 const formProfileElement = profilePopupElement.querySelector(".form");
 
-const nameInput = formProfileElement.querySelector(".form__text_type_name");
+const nameInput = formProfileElement.querySelector(".form__input_type_name");
 const jobInput = formProfileElement.querySelector(
-  ".form__text_type_description"
+  ".form__input_type_description"
 );
 
 const nameOutput = profileElement.querySelector(".profile__name");
@@ -112,10 +112,10 @@ function closePopupByOverlay(evt) {
 const imageAddPopup = document.querySelector(".popup-add");
 const addNewCardFormElement = imageAddPopup.querySelector(".form");
 const pictureNameInput = addNewCardFormElement.querySelector(
-  ".form__text_type_name"
+  ".form__input_type_name"
 );
 const pictureLinkInput = addNewCardFormElement.querySelector(
-  ".form__text_type_link"
+  ".form__input_type_link"
 );
 
 function newCardCreate(evt) {
