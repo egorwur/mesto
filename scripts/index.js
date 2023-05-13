@@ -86,14 +86,6 @@ function closePopup(popup) {
   document.removeEventListener('keydown', closeByEsc)
 }
 
-//POPUP CLOSE BY SUBMIT FUNCTION
-function closeCurrentPopup(popup) {
-  const openedPopup = document.querySelector(".popup_opened");
-  if (openedPopup) {
-    closePopup(openedPopup);
-  }
-}
-
 //CLOSE POPUP ON ESC BUTTON
 function closeByEsc(evt) {
   if (evt.key === 'Escape') {
@@ -129,8 +121,8 @@ function newCardCreate(evt) {
   galleryElement.prepend(cardCopyElement);
   closePopup(imageAddPopup);
   addNewCardFormElement.reset();
-
-  enableValidation(settingsForValidation);
+  evt.submitter.classList.add('form__save-btn_disabled')
+  evt.submitter.disabled = true;
 }
 
 function deleteCard(evt) {
