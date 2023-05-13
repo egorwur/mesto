@@ -6,6 +6,6 @@
   opacity: 0;
   color: #FF0000;
   position: absolute;
-  top: calc(100% + 5px);
+  top: 100%;
 }
 

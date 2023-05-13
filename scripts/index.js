@@ -78,28 +78,29 @@ popups.forEach((popup) => {
 // POPUP OPEN FUNCTION FOR ALL
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closeByEsc)
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closeByEsc)
 }
 
 //POPUP CLOSE BY SUBMIT FUNCTION
 function closeCurrentPopup(popup) {
   const openedPopup = document.querySelector(".popup_opened");
   if (openedPopup) {
-    openedPopup.classList.remove("popup_opened");
+    closePopup(openedPopup);
   }
 }
 
 //CLOSE POPUP ON ESC BUTTON
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    popups.forEach((popup) => {
-      closePopup(popup);
-    });
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
-});
+}
 
 //CLOSE POPUP BY OVERLAY
 function closePopupByOverlay(evt) {
@@ -127,7 +128,7 @@ function newCardCreate(evt) {
   );
   galleryElement.prepend(cardCopyElement);
 
-  closeCurrentPopup();
+  closePopup(imageAddPopup);
   addNewCardFormElement.reset();
 }
 

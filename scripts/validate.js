@@ -51,13 +51,6 @@ const toggleButtonState = (inputList, buttonElement, settings) => {
 function enableValidation(settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'))
-    fieldsetList.forEach((fieldSet) => {
-      setEventListeners(fieldSet, settings);
-    })
     setEventListeners(formElement, settings);
   });
 }
@@ -66,7 +59,7 @@ enableValidation({
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-btn',
-  inactiveButtonClass: '.form__save-btn_disabled',
+  inactiveButtonClass: 'form__save-btn_disabled',
   inputErrorClass: 'form__input_type_error',
   errorClass: 'form__input-error_active'
 });
