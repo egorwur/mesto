@@ -127,9 +127,10 @@ function newCardCreate(evt) {
     pictureLinkInput.value
   );
   galleryElement.prepend(cardCopyElement);
-
   closePopup(imageAddPopup);
   addNewCardFormElement.reset();
+
+  enableValidation(settingsForValidation);
 }
 
 function deleteCard(evt) {
