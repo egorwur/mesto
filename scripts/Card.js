@@ -56,7 +56,8 @@ export default class Card {
     const imageElement = this._cardElement.querySelector(".card__image");
     imageElement.addEventListener("click", this._handleClickOnImage);
 
-    const closeButtonElement = this._cardElement.querySelector(".card__remove-btn");
+    const closeButtonElement =
+      this._cardElement.querySelector(".card__remove-btn");
     closeButtonElement.addEventListener("click", this._deleteCard);
   }
 }
