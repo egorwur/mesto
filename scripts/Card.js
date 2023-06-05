@@ -1,22 +1,32 @@
-import closeByEsc from "./index.js";
+import { closeByEsc, openImagePopup } from "./index.js";
 
 export default class Card {
   constructor(title, imageLink, templateSelector) {
     this._title = title;
     this._link = imageLink;
     this._templateSelector = templateSelector;
+    this._buttonLike = null;
     this._cardElement = this._createCardElement();
   }
-  _createCardElement() {
-    const cardElement = document
+
+  _getCardTemplate() {
+    const cardTemplate = document
       .querySelector(this._templateSelector)
       .content.querySelector(".card")
       .cloneNode(true);
+    return cardTemplate;
+  }
+
+  _createCardElement() {
+    const cardElement = this._getCardTemplate();
 
     cardElement.querySelector(".card__title").textContent = this._title;
-    const imageElement = cardElement.querySelector(".card__image");
-    imageElement.src = this._link;
-    imageElement.alt = this._title;
+
+    this._imageElement = cardElement.querySelector(".card__image");
+    this._imageElement.src = this._link;
+    this._imageElement.alt = this._title;
+
+    this._buttonLike = cardElement.querySelector(".card__like-btn");
 
     return cardElement;
   }
@@ -25,23 +35,12 @@ export default class Card {
     evt.target.closest(".card").remove();
   }
 
-  _handleLikeButton(evt) {
-    evt.currentTarget.classList.toggle("card__like-btn_active");
+  _handleLikeButton() {
+    this._buttonLike.classList.toggle("card__like-btn_active");
   }
 
-  _handleClickOnImage(evt) {
-    const imagePopup = document.querySelector(".popup-image");
-
-    imagePopup.classList.add("popup_opened");
-    document.addEventListener("keydown", closeByEsc);
-
-    const imageInPopup = imagePopup.querySelector(".popup__image");
-    const titleInPopup = imagePopup.querySelector(".popup__image-name");
-    imageInPopup.src = evt.currentTarget.src;
-    imageInPopup.alt = evt.currentTarget.alt;
-    titleInPopup.textContent = evt.currentTarget
-      .closest(".card")
-      .querySelector(".card__title").textContent;
+  _handleClickOnImage() {
+    openImagePopup(this._link, this._title);
   }
 
   generate() {
@@ -50,11 +49,13 @@ export default class Card {
   }
 
   _setEventListeners() {
-    const likeButton = this._cardElement.querySelector(".card__like-btn");
-    likeButton.addEventListener("click", this._handleLikeButton);
+    this._buttonLike.addEventListener(
+      "click",
+      this._handleLikeButton.bind(this)
+    );
 
-    const imageElement = this._cardElement.querySelector(".card__image");
-    imageElement.addEventListener("click", this._handleClickOnImage);
+    const imageElement = this._imageElement;
+    imageElement.addEventListener("click", this._handleClickOnImage.bind(this));
 
     const closeButtonElement =
       this._cardElement.querySelector(".card__remove-btn");
