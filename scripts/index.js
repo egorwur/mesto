@@ -40,7 +40,7 @@ const pictureLinkInput = addNewCardFormElement.querySelector(
 );
 
 // FOR VALIDATION
-const formValidators = [];
+const formValidators = {};
 
 const settingsForValidation = {
   formSelector: ".form",
@@ -57,15 +57,15 @@ const formList = Array.from(
 
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(settingsForValidation, formElement);
+  formValidators[formElement.id] = formValidator;
   formValidator.enableValidation();
-
-  formValidators.push(formValidator);
 });
 
-function resetValidation() {
-  formValidators.forEach((formValidator) => {
+function resetValidation(formName) {
+  const formValidator = formValidators[formName];
+  if (formValidator) {
     formValidator.resetValidation();
-  });
+  }
 }
 
 // Initial cards
@@ -133,7 +133,7 @@ function newCardCreate(evt) {
   prependCard(cardElement);
   closePopup(imageAddPopup);
   addNewCardFormElement.reset();
-  resetValidation();
+  resetValidation("gallery");
 }
 
 //PROFILE POPUP
@@ -151,6 +151,7 @@ function handleFormSubmit(evt) {
   jobOutput.textContent = newJob;
 
   closePopup(profilePopupElement);
+  resetValidation("profile");
 }
 
 //EVENT LISTENERS

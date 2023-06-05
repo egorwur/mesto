@@ -1,5 +1,4 @@
-import { closeByEsc, openImagePopup } from "./index.js";
-
+import { openImagePopup } from "./index.js";
 export default class Card {
   constructor(title, imageLink, templateSelector) {
     this._title = title;
@@ -31,8 +30,8 @@ export default class Card {
     return cardElement;
   }
 
-  _deleteCard(evt) {
-    evt.target.closest(".card").remove();
+  _deleteCard() {
+    this._cardElement.remove()
   }
 
   _handleLikeButton() {
@@ -59,6 +58,6 @@ export default class Card {
 
     const closeButtonElement =
       this._cardElement.querySelector(".card__remove-btn");
-    closeButtonElement.addEventListener("click", this._deleteCard);
+    closeButtonElement.addEventListener("click", this._deleteCard.bind(this));
   }
 }
