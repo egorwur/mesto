@@ -31,7 +31,7 @@ export default class Card {
   }
 
   _deleteCard() {
-    this._cardElement.remove()
+    this._cardElement.remove();
   }
 
   _handleLikeButton() {
@@ -39,7 +39,7 @@ export default class Card {
   }
 
   _handleClickOnImage() {
-    this._openImagePopup(this._data)
+    this._openImagePopup(this._data);
   }
 
   generate() {

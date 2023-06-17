@@ -42,7 +42,10 @@ export class FormValidator {
     const hasInvalidInput = this._hasInvalidInput(this._inputList);
 
     this._buttonElement.disabled = hasInvalidInput;
-    this._buttonElement.classList.toggle(this._inactiveButtonClass, hasInvalidInput);
+    this._buttonElement.classList.toggle(
+      this._inactiveButtonClass,
+      hasInvalidInput
+    );
   }
 
   _hasInvalidInput() {

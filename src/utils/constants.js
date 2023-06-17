@@ -25,7 +25,6 @@ export const initialCards = [
   },
 ];
 
-
 export const settingsForValidation = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -35,12 +34,11 @@ export const settingsForValidation = {
   errorClass: "form__input-error_active",
 };
 
-export const profilePopupButton =
-  document.querySelector(".profile__edit-btn");
+export const profilePopupButton = document.querySelector(".profile__edit-btn");
 
 export const newCardOpenButton = document.querySelector(".profile__add-btn");
 
 export const profileData = {
-  name: '.profile__name',
-  description: '.profile__description'
-}
+  name: ".profile__name",
+  description: ".profile__description",
+};
