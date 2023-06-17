@@ -1,13 +1,12 @@
 import './index.css';
 import Card from "./components/Card.js";
 import { FormValidator } from "./components/FormValidator.js";
-import { initialCards } from "./components/cards.js";
 import Section from './components/Section.js';
 import Popup from './components/Popup.js'
 import PopupWithImage from "./components/PopupWithImage.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import UserInfo from "./components/UserInfo.js";
-import { settingsForValidation, profilePopupButton, newCardOpenButton, profileData } from './utils/constants';
+import { settingsForValidation, profilePopupButton, newCardOpenButton, profileData, initialCards } from './utils/constants';
 
 const userInfo = new UserInfo(profileData);
 const popup = new Popup('.popup');
