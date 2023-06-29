@@ -45,8 +45,8 @@ const popupProfileForm = new PopupWithForm(
     popupProfileForm.isLoading(true);
     api
       .setProfileInfo(popupProfileForm.getInputValues())
-      .then(() => {
-        userInfo.setUserInfo(popupProfileForm.getInputValues());
+      .then((res) => {
+        userInfo.setUserInfo(res);
       })
       .finally(() => {
         popupProfileForm.close();
@@ -78,18 +78,14 @@ const popupAvatarChange = new PopupWithForm(
   { loadingText: "Сохранение...", defaultText: "Сохранить" }
 );
 
-//RENDER INFO(AVATAR, NAME, ABOUT)
-api
-  .getProfileInfo()
-  .then((info) => {
-    userInfo.setUserInfo(info);
-    userInfo.setUserAvatar(info);
+//RENDER INITIAL INFO(AVATAR, NAME, ABOUT) AND CARDS
+Promise.all([api.getInitialCards(), api.getProfileInfo()])
+  .then(([cardsData, userData]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setUserAvatar(userData);
+    section.addItems(cardsData)
   })
-  .catch((err) => console.log(err));
-
-api.getInitialCards().then((cards) => {
-  section.addItems(cards);
-});
+  .catch((err) => console.log(err))
 
 const cardElement = (item, userID, likes) => {
   const card = new Card(
@@ -153,13 +149,6 @@ const popupNewCardForm = new PopupWithForm(
   { loadingText: "Создание...", defaultText: "Создать" }
 );
 
-profilePopupButton.addEventListener("click", () => {
-  popupProfileForm.setInputValues(userInfo.getUserInfo());
-  popupProfileForm.open();
-});
-
-section.renderItems();
-
 // VALIDATION
 const profileEditForm = document.forms["profile"];
 const newCardForm = document.forms["gallery"];
@@ -185,6 +174,12 @@ newCardFormValidation.enableValidation();
 // EVENT LISTENERS
 avatarPopupButton.addEventListener("click", () => {
   popupAvatarChange.open();
+});
+
+profilePopupButton.addEventListener("click", () => {
+  popupProfileForm.setInputValues(userInfo.getUserInfo());
+  popupProfileForm.open();
+  profileValidation.resetValidation();
 });
 
 popup.setEventListeners();

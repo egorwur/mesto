@@ -7,5 +7,6 @@
 - @media queries
 - grid
 - Валидация с использованием JS
+- Webpack
 
 ### Ссылка на GitHub Pages: https://egorwur.github.io/mesto/

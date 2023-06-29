@@ -7,22 +7,14 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._baseURL}/cards`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
 
   getProfileInfo() {
     return fetch(`${this._baseURL}/users/me`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
 
@@ -34,12 +26,7 @@ export default class Api {
         name: infoValues.name,
         about: infoValues.about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
   postNewCard(data) {
@@ -50,12 +37,7 @@ export default class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
 
@@ -64,22 +46,15 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => console.log(err));
+    .then((res) => {  return this._checkForStatus(res);
+    })
   }
 
   setLikeToCard(id) {
     return fetch(`${this._baseURL}/cards/${id}/likes`, {
       method: "PUT",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
 
@@ -88,12 +63,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(url),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+    }).then((res) => {  return this._checkForStatus(res);
     });
   }
 
@@ -101,12 +71,13 @@ export default class Api {
     return fetch(`${this._baseURL}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+    }).then((res) => {  return this._checkForStatus(res);
     });
+  }
+
+  _checkForStatus(res) {
+    return res.ok
+     ? res.json()
+     : Promise.reject(`Ошибка: ${res.status}`)
   }
 }
