@@ -12,6 +12,7 @@
   font-size: 18px;
   line-height: 1.2;
   font-weight: 400;
+  transition: opacity .17s ease-out;
 }
 
 .form__save-btn:hover {

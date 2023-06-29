@@ -10,20 +10,19 @@
     <div class="page__container">
       <header class="header page__header">
         <img
-        src="<%=require('./images/logo.svg')%>"
+          src="<%=require('./images/logo.svg')%>"
           alt="Логотип 'Место'"
           class="header__logo" />
       </header>
       <main class="page__content">
         <section class="profile">
-          <img
-            src="<%=require('./images/image.jpg')%>"
-            alt="Аватарка пользователя"
-            class="profile__avatar" />
+          <div class="profile__avatar-container">
+            <img src="#" alt="Аватарка пользователя" class="profile__avatar" />
+          </div>
           <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-btn" type="button"></button>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description"></p>
           </div>
           <button class="profile__add-btn" type="button"></button>
         </section>
@@ -39,29 +38,34 @@
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="profile-edit" method="get" class="form" id="profile" novalidate>
+        <form
+          name="profile-edit"
+          method="get"
+          class="form"
+          id="profile"
+          novalidate>
           <label class="form__field">
-          <input
-            id="name-input"
-            type="text"
-            name="name"
-            class="form__input form__input_type_name"
-            minlength="2"
-            maxlength="40"
-            placeholder="Ваше имя"
-            required />
-          <span class="form__input-error name-input-error"></span>
-        </label>
-        <label class="form__field">
-          <input
-            id="description-input"
-            type="text"
-            name="description"
-            class="form__input form__input_type_description"
-            minlength="2"
-            maxlength="200"
-            placeholder="Вид деятельности"
-            required />
+            <input
+              id="name-input"
+              type="text"
+              name="name"
+              class="form__input form__input_type_name"
+              minlength="2"
+              maxlength="40"
+              placeholder="Ваше имя"
+              required />
+            <span class="form__input-error name-input-error"></span>
+          </label>
+          <label class="form__field">
+            <input
+              id="description-input"
+              type="text"
+              name="about"
+              class="form__input form__input_type_description"
+              minlength="2"
+              maxlength="200"
+              placeholder="Вид деятельности"
+              required />
             <span class="form__input-error description-input-error"></span>
           </label>
           <button class="form__save-btn" type="submit">Сохранить</button>
@@ -72,27 +76,32 @@
       <div class="popup__container">
         <button class="popup__close-btn" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="gallery-add" method="get" class="form" novalidate id="gallery">
+        <form
+          name="gallery-add"
+          method="get"
+          class="form"
+          novalidate
+          id="gallery">
           <label class="form__field">
-          <input
-            id="picture-name-input"
-            type="text"
-            name="name"
-            class="form__input form__input_type_name"
-            minlength="2"
-            maxlength="30"
-            placeholder="Название"
-            required />
+            <input
+              id="picture-name-input"
+              type="text"
+              name="name"
+              class="form__input form__input_type_name"
+              minlength="2"
+              maxlength="30"
+              placeholder="Название"
+              required />
             <span class="form__input-error picture-name-input-error"></span>
           </label>
           <label class="form__field">
-          <input
-            id="picture-url-input"
-            type="url"
-            name="link"
-            class="form__input form__input_type_link"
-            placeholder="Ссылка на картинку"
-            required />
+            <input
+              id="picture-url-input"
+              type="url"
+              name="link"
+              class="form__input form__input_type_link"
+              placeholder="Ссылка на картинку"
+              required />
             <span class="form__input-error picture-url-input-error"></span>
           </label>
           <button class="form__save-btn" type="submit">Создать</button>
@@ -106,13 +115,44 @@
         <span class="popup__image-name"></span>
       </div>
     </div>
+    <div class="popup popup-avatar">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form name="avatar-change" class="form" novalidate id="avatar">
+          <label class="form__field">
+            <input
+              id="avatar-url-input"
+              type="url"
+              name="avatar"
+              class="form__input form__input_type_link"
+              placeholder="Ссылка на картинку"
+              required />
+            <span class="form__input-error avatar-url-input-error"></span>
+          </label>
+          <button class="form__save-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup-delete-confirm">
+      <div class="popup__container">
+        <button class="popup__close-btn" type="button"></button>
+        <h2 class="popup__title popup__title_type_confirm">Вы уверены?</h2>
+        <form name="delete-confirm" class="form" novalidate id="confirm">
+          <button class="form__save-btn" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
     <template class="card-template">
       <li class="card">
         <button class="card__remove-btn" type="button"></button>
         <img src="#" alt="" class="card__image" />
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button class="card__like-btn" type="button"></button>
+          <div class="card__like">
+            <button class="card__like-btn" type="button"></button>
+            <span class="card__like-count"></span>
+          </div>
         </div>
       </li>
     </template>
